@@ -13,7 +13,7 @@
 
 const headerContainer = document.querySelector('.header-container')
 
-function header(dates, title, temp) {
+function header() {
 
     const headerDiv = document.createElement('div')
     const date = document.createElement('span')
@@ -25,17 +25,17 @@ function header(dates, title, temp) {
     temp.classList.add('temp')
 
     headerContainer.appendChild(headerDiv)
-    headerDiv.appendChild(span1)
+    headerDiv.appendChild(date)
     headerDiv.appendChild(hheader)
-    headerDiv.appendChild(span2)
+    headerDiv.appendChild(temp)
 
-    date.textContent = dates
-    hheader.textContent = title
-    temp.textContent = temp
+    date.textContent = 'MARCH 28, 2020'
+    hheader.textContent = 'Lambda Times'
+    temp.textContent = '98°'
 
 
-    return header
+    return headerDiv
 
 }
 
-headerContainer.append(headerDiv('MARCH 28, 2020', 'Lambda Times', '98°'))
+headerContainer.appendChild(header())

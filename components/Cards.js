@@ -21,7 +21,7 @@
 //
 // Use your function to create a card for each of the articles, and append each card to the DOM.
 
-function manyCards(headline, authorName, authorPhoto, id){
+function manyCards(obj){
 
     const card = document.createElement('div')
     const headLine = document.createElement('div')
@@ -35,9 +35,9 @@ function manyCards(headline, authorName, authorPhoto, id){
     author.classList.add('author')
     imgContainer.classList.add('img-container')
 
-    authorImg.src = img 
-    headLine.textContent = headline
-    authorName.textContent = name
+    authorImg.src = obj.authorPhoto
+    headLine.textContent = obj.headline
+    authorName.textContent = obj.authorName
 
     card.appendChild(headLine)
     card.appendChild(author)
@@ -47,7 +47,7 @@ function manyCards(headline, authorName, authorPhoto, id){
 
 
     card.addEventListener('click', (event)=>{
-        console.log( event.target.headLine)
+        console.log( obj.headline)
     })
 
 
@@ -62,19 +62,19 @@ axios.get('https://lambda-times-api.herokuapp.com/articles')
 .then((res) => {
    
     res.data.articles.bootstrap.forEach((data) => {
-        cardCont.append(manyCards(data.authorName, data.authorPhoto, data.authorPhoto, data.id))
+        cardCont.append(manyCards(data))
     });
     res.data.articles.javascript.forEach((data) => {
-        cardCont.append(manyCards(data.authorName, data.authorPhoto, data.authorPhoto, data.id))
+        cardCont.append(manyCards(data))
     });
     res.data.articles.jquery.forEach((data) => {
-        cardCont.append(manyCards(data.authorName, data.authorPhoto, data.authorPhoto, data.id))
+        cardCont.append(manyCards(data))
     });
     res.data.articles.node.forEach((data) => {
-        cardCont.append(manyCards(data.authorName, data.authorPhoto, data.authorPhoto, data.id))
+        cardCont.append(manyCards(data))
     });
     res.data.articles.technology.forEach((data) => {
-        cardCont.append(manyCards(data.authorName, data.authorPhoto, data.authorPhoto, data.id))
+        cardCont.append(manyCards(data))
     });
 })
 
